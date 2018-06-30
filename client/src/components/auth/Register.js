@@ -48,6 +48,12 @@ class Register extends Component {
     // is new User and which action is TEST_DISPATCH tranfer to reducer and update user from reducer to store.
   }
 
+  componentDidMount() {
+    if(this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     const { errors } = this.state;
     return (

@@ -78,17 +78,19 @@ router.post("/login", (req, res) => {
   User.findOne({ email }) // email : email but can write only email with es6
     .then(user => {
       // callback with promis
-      //Check for User
+      // Check for User
       if (!user) {
         errors.email = "user not found";
         return res.status(404).json(errors);
       }
 
       // Check for password
-      bcrypt.compare(password, user.password).then(isMatch => {
+      bcrypt.compare(password, user.password).then(isMatch => { 
+        // console.log(isMatch);  // isMatch return true or false
         if (isMatch) {
           // res.json({ msg: "Success" });
           const payload = { id: user.id, name: user.name, avatar: user.avatar };
+          //  jwt.sign(payload, secretOrPrivateKey, [options, callback])
           jwt.sign(
             payload,
             keys.secretOrKey,
@@ -96,7 +98,7 @@ router.post("/login", (req, res) => {
             (err, token) => {
               res.json({
                 success: true,
-                token: "Bearer " + token
+                token: "Bearer " + token //"Bearer " : user for extracting the JWT from the request fromAuthHeaderAsBearerToken()
               });
             }
           );

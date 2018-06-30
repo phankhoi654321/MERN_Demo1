@@ -105,7 +105,7 @@ router.get("/all", (req, res) => {
 // @access  Private
 router.post(
   "/experience",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),   //https://github.com/themikenicholson/passport-jwt   (Authenticate requests)
   (req, res) => {
     const { errors, isValid } = validateExperienceInput(req.body);
 

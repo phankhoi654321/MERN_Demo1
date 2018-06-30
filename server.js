@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const passport = require("passport");
+const passport = require("passport");     //Passport is a Node.js middleware that offers a variety of different request authentication strategies that are easy to implement.git 
 
 
 const users = require("./routes/api/users");
